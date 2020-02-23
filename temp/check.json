@@ -1,0 +1,88 @@
+{
+    "fields": [
+        {
+            "name": "urine_color",
+            "type": "select",
+            "options": {
+                "1": "สีปกติ",
+                "2": "สีเหลืองเข้ม",
+                "3": "สีเหลืองปนเลือด"
+            }
+        },
+        {
+            "name": "skin",
+            "type": "select",
+            "options": {
+                "1": "ผิวปกติ",
+                "2": "ผิวแห้งกร้าน",
+                "3": "ผิวมัน"
+            }
+        },
+        {
+            "name": "food_type",
+            "type": "select",
+            "options": {
+                "1": "นม",
+                "2": "ผัก+นม",
+                "3": "ผัก+ไข่"
+            }
+        },
+        {
+            "name": "respiratory_system",
+            "type": "select",
+            "options": {
+                "1": "หายใจได้เอง",
+                "2": "มีเครื่องช่วยหายใจ",
+                "3": "เจาะคอ"
+            }
+        },
+        {
+            "name": "bedsore",
+            "type": "select",
+            "options": {
+                "1": "ก้น",
+                "2": "ข้อศอก",
+                "3": "ข้อเท้า"
+            }
+        },
+        {
+            "name": "phlegm",
+            "type": "select",
+            "options": {
+                "1": "สีใสปกติ",
+                "2": "สีเหลืองอ่อน",
+                "3": "สีเขียว"
+            }
+        },
+
+        {
+            "name": "patient_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "patient_id",
+            "references": "id",
+            "on": "patients",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "patient",
+            "type": "belongsTo",
+            "class": "App\\Patient"
+        }
+    ],
+    "validations": [
+        {
+            "field": "urine_color",
+            "rules": "required"
+        },
+        {
+            "field": "skin",
+            "rules": "required"
+        }
+    ]
+}
