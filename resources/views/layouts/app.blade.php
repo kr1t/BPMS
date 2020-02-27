@@ -18,9 +18,97 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap");
+            html,
+            body {
+                font-family: "Chakra Petch" !important;
+            }
+            .bradcam_area {
+                padding: 170px;
+                background-size: cover;
+                background-position: center center;
+                padding: 148px 0px;
+                background-repeat: no-repeat;
+            }
+            .breadcam_bg_2 {
+                background-image: url(../img/banner/bradcam3.png);
+            }
+            .icon-fa {
+                font-size: 15px;
+                color: #5db2ff;
+                margin-right: 12px;
+            }
+            .icon-fa a:hover {
+                color: #5db2ff;
+            }
+            .menu-list {
+                color: #5db2ff !important;
+                border-bottom: 1px solid #5db2ff;
+            }
+            .navbar-light .navbar-nav .nav-link:focus,
+            .navbar-light .navbar-nav .nav-link:hover {
+                color: #5db2ff;
+            }
+            a {
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                <div class="container">
+                    <a href="#"
+                        ><i
+                            class="fa fa-instagram icon-fa"
+                            aria-hidden="true"
+                        ></i
+                    ></a>
+                    <a href="#"
+                        ><i
+                            class="fa fa-facebook icon-fa"
+                            aria-hidden="true"
+                        ></i
+                    ></a>
+                    <a href="#"
+                        ><i
+                            class="fa fa-google-plus icon-fa"
+                            aria-hidden="true"
+                        ></i
+                    ></a>
+
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto"></ul>
+
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Authentication Links -->
+
+                            <ul
+                                class="navbar-nav mr-auto mt-2 short_contact_list"
+                            >
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-envelope "></i>
+                                        info@bpms.com</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-phone ml-5"></i>
+                                        160160</a
+                                    >
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
                     <a
@@ -65,6 +153,65 @@
                                 >
                             </li>
                             @else
+                            <ul class="navbar-nav mr-auto mt-2">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#"
+                                        >หน้าแรก
+                                        <!-- <span class="sr-only">(current)</span> -->
+                                    </a>
+                                </li>
+                                <!--
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        href="#"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        Pages
+                                    </a>
+                                    <div
+                                        class="dropdown-menu"
+                                        aria-labelledby="navbarDropdown"
+                                    >
+                                        <a class="dropdown-item" href="#"
+                                            >Elements</a
+                                        >
+                                        <a class="dropdown-item" href="#"
+                                            >About</a
+                                        >
+                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item" href="#"
+                                                                            >Something else here</a
+                                                                        >
+                                    </div>
+                                </li>-->
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link"
+                                        href="{{ url('/nurse/patients') }}"
+                                        >รายการผู้ป่วย</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link"
+                                        href="{{ url('/tasks') }}"
+                                        >ปฏิทิน</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('#') }}"
+                                        >บุคลากร</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">ติดต่อ</a>
+                                </li>
+                            </ul>
                             <li class="nav-item dropdown">
                                 <a
                                     id="navbarDropdown"
@@ -75,6 +222,10 @@
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
+                                    <!-- <a href="">asdas</a>
+                                    <a href="">asdas</a>
+                                    <a href="">asdas</a> -->
+
                                     <img
                                         src="{{ Auth::user()->avatar_url }}"
                                         width="40"
@@ -118,6 +269,54 @@
                     </div>
                 </div>
             </nav>
+            <!-- bradcam_area_start  -->
+            <div
+                id="carouselExampleControls"
+                class="carousel slide container"
+                data-ride="carousel"
+            >
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img
+                            src="/cover1.png"
+                            class="d-block w-100"
+                            alt="..."
+                        />
+                    </div>
+                    <div class="carousel-item ">
+                        <img
+                            src="/cover2.png"
+                            class="d-block w-100"
+                            alt="..."
+                        />
+                    </div>
+                </div>
+                <a
+                    class="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
+                >
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a
+                    class="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                >
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- bradcam_area_end  -->
 
             <main class="py-4">
                 @yield('content')
