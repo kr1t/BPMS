@@ -57,58 +57,7 @@
     </head>
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <div class="container">
-                    <a href="#"
-                        ><i
-                            class="fa fa-instagram icon-fa"
-                            aria-hidden="true"
-                        ></i
-                    ></a>
-                    <a href="#"
-                        ><i
-                            class="fa fa-facebook icon-fa"
-                            aria-hidden="true"
-                        ></i
-                    ></a>
-                    <a href="#"
-                        ><i
-                            class="fa fa-google-plus icon-fa"
-                            aria-hidden="true"
-                        ></i
-                    ></a>
-
-                    <div
-                        class="collapse navbar-collapse"
-                        id="navbarSupportedContent"
-                    >
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto"></ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
-
-                            <ul
-                                class="navbar-nav mr-auto mt-2 short_contact_list"
-                            >
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-envelope "></i>
-                                        info@bpms.com</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-phone ml-5"></i>
-                                        160160</a
-                                    >
-                                </li>
-                            </ul>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+           
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
                     <a
