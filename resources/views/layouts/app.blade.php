@@ -19,11 +19,12 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
         <style>
-            @import url("https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap");
+            @import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,500,600,700&display=swap&subset=thai');
             html,
             body {
-                font-family: "Chakra Petch" !important;
+                font-family: 'Bai Jamjuree' !important;
                 background-color:#175A87;
+                font-weight: 700;
             }
             .bradcam_area {
                 padding: 170px;
@@ -56,7 +57,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-image:url('/images/pattern.png');backgroud-color:#175A87;">
         <div id="app">
            
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -65,7 +66,7 @@
                         class="navbar-brand"
                         href="{{ Auth::check() ? url('/home') : url('/')}}"
                     >
-                        {{ config("app.name", "Laravel") }}
+                       BPMS
                     </a>
                     <button
                         class="navbar-toggler"
@@ -83,10 +84,10 @@
                         class="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <!-- Left Side Of Navbar -->
+                        
                         <ul class="navbar-nav mr-auto"></ul>
 
-                        <!-- Right Side Of Navbar -->
+                        
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @if(!Auth::check())
@@ -110,35 +111,7 @@
                                         <!-- <span class="sr-only">(current)</span> -->
                                     </a>
                                 </li>
-                                <!--
-                                <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        Pages
-                                    </a>
-                                    <div
-                                        class="dropdown-menu"
-                                        aria-labelledby="navbarDropdown"
-                                    >
-                                        <a class="dropdown-item" href="#"
-                                            >Elements</a
-                                        >
-                                        <a class="dropdown-item" href="#"
-                                            >About</a
-                                        >
-                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"
-                                                                            >Something else here</a
-                                                                        >
-                                    </div>
-                                </li>-->
+                                
                                 <li class="nav-item">
                                     <a
                                         class="nav-link"
@@ -172,9 +145,6 @@
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    <!-- <a href="">asdas</a>
-                                    <a href="">asdas</a>
-                                    <a href="">asdas</a> -->
 
                                     <img
                                         src="{{ Auth::user()->avatar_url }}"
@@ -222,7 +192,7 @@
             <!-- bradcam_area_start  -->
             <div
                 id="carouselExampleControls"
-                class="carousel slide container"
+                class="carousel slide container mt-4"
                 data-ride="carousel"
             >
                 <div class="carousel-inner">

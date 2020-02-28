@@ -18,11 +18,12 @@
         />
         <!-- Styles -->
         <style>
+            @import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,500,600,700&display=swap&subset=thai');
             html,
             body {
                 background-color:#175A87 ;
                 color: #FDFEFE;
-                font-family: "Nunito", sans-serif;
+                font-family: 'Bai Jamjuree' !important;
                 font-weight: 500;
                 height: 100vh;
                 margin: 0;
@@ -70,6 +71,12 @@
             .m-b-md {
                 margin-bottom: 20px;
             }
+            .logstyle{
+                border: 1px solid #fff;
+                width: 100px;
+                height: 80px;   
+            }
+            
         </style>
     </head>
     <body style="background-image:url('/images/P1.jpg');background-size:cover;backgroud-color:#175A87;">
@@ -80,7 +87,7 @@
                 @auth
                 <a href="{{ url('/home') }}">Home</a>
                 @else
-                <a href="{{ route('login') }}">เข้าสู่ระบบ</a>
+                <a class="logstyle" href="{{ route('login') }}">เข้าสู่ระบบ</a>
 
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}">สมัครสมาชิก</a>
