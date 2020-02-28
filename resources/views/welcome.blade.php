@@ -20,10 +20,10 @@
         <style>
             html,
             body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color:#175A87 ;
+                color: #FDFEFE;
                 font-family: "Nunito", sans-serif;
-                font-weight: 200;
+                font-weight: 500;
                 height: 100vh;
                 margin: 0;
             }
@@ -53,21 +53,22 @@
             }
 
             .title {
-                font-size: 23px;
+                font-size: 40px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #FDFEFE;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 600;
                 letter-spacing: 0.1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
         </style>
     </head>
