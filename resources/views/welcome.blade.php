@@ -71,12 +71,18 @@
             .m-b-md {
                 margin-bottom: 20px;
             }
-            .logstyle{
-                border: 1px solid #fff;
-                width: 100px;
-                height: 80px;   
-            }
             
+            .links > a{
+                border: 1px solid #fff;
+                padding: 10px;
+            }
+            .links > a:hover{
+                border: 1px solid #175A87;
+                padding: 10px;
+                background-color: #175A87;
+                transition: 400ms;
+                color: #FDFEFE;
+            }
         </style>
     </head>
     <body style="background-image:url('/images/P1.jpg');background-size:cover;backgroud-color:#175A87;">
@@ -87,10 +93,10 @@
                 @auth
                 <a href="{{ url('/home') }}">Home</a>
                 @else
-                <a class="logstyle" href="{{ route('login') }}">เข้าสู่ระบบ</a>
+                <a class="logstyle" href="{{ route('login') }}"><i class="fa fa-user"></i> เข้าสู่ระบบ</a>
 
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}">สมัครสมาชิก</a>
+                <a class="logstyle" href="{{ route('register') }}"><i class="fa fa-user-plus"></i> สมัครสมาชิก</a>
                 @endif @endauth
             </div>
             @endif

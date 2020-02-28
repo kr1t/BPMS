@@ -44,4 +44,10 @@
         })
     });
 </script>
+
+<style>
+    .fc-title{
+        color: #fff;
+    }
+</style>
 @endsection
