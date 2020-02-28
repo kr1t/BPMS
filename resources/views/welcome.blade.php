@@ -72,7 +72,8 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-image:url('/images/P1.jpg');background-size:cover;backgroud-color:#175A87;">
+        
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
             <div class="top-right links">

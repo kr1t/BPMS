@@ -23,6 +23,7 @@
             html,
             body {
                 font-family: "Chakra Petch" !important;
+                background-color:#175A87;
             }
             .bradcam_area {
                 padding: 170px;
