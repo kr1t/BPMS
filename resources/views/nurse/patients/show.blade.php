@@ -123,8 +123,10 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <h5>ผลการตรวจเช็คอาการผู้ป่วยรายวัน</h5>
+                    <a href="?m_status=0">เดือนปัจจุบัน</a> |
+                    <a href="?m_status=1">ย้อนหลัง 1 เดือน</a>
 
-                    <div class="table-responsive">
+                    <div class="table-responsive table-striped">
                         <table class="table">
                             <thead>
                                 <tr>

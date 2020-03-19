@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         User::insert([
             "name" =>  "วรรณภัสสรณ์ แก้วประดิษฐ์",
             "email" => "nurse@email.com",
-            "uid" => time(),
+            "uid" => genUser(1),
             "password" => bcrypt("123456")
         ]);
     }

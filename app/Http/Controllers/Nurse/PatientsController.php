@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Patient;
 use App\Check;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,10 +81,17 @@ class PatientsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         $patient = Patient::where('uid', $id)->first();
-        $checks = Check::where('patient_id', $patient->id)->get();
+        $checks = Check::where('patient_id', $patient->id)->where(function ($query) use ($request) {
+
+            if ($request->m_status == 1) {
+                $query->whereMonth('created_at', Carbon::now()->subMonth(1));
+            } else {
+                $query->whereMonth('created_at', Carbon::now());
+            }
+        })->get();
         return view('nurse.patients.show', compact('patient', 'checks'));
     }
 
