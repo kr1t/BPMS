@@ -1,9 +1,9 @@
 @extends('layouts.app') @section('content')
 <div class="container">
     <div class="row">
-        @include('admin.sidebar')
+        <!-- @include('admin.sidebar') -->
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">ผู้ป่วย#{{ $patient->uid }}</div>
                 <div class="card-body">
@@ -128,7 +128,9 @@
 
                     <div class="table-responsive table-striped">
                         <table class="table">
-                            <thead>
+                            <thead
+                                style="background-color: #175A87; color: #fff;"
+                            >
                                 <tr>
                                     <td>#</td>
                                     <td>วันที่</td>

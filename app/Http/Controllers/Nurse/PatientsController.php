@@ -65,10 +65,10 @@ class PatientsController extends Controller
         if ($request->hasFile('avatar')) {
             $requestData['avatar'] = $request->file('avatar')
                 ->store('uploads', 'public');
-            $requestData['uid'] = time();
-            $requestData['nurse_id'] = $user->id;
         }
 
+        $requestData['uid'] = time();
+        $requestData['nurse_id'] = $user->id;
         Patient::create($requestData);
 
         return redirect('nurse/patients')->with('flash_message', 'Patient added!');
