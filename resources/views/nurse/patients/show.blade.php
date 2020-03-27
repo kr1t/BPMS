@@ -138,7 +138,7 @@
                                     class="card-body"
                                     style="padding: 40px 10px;"
                                 >
-                                    {{ $nurseCheck->SIS
+                                    {{ $nurseCheck? $nurseCheck->SIS :''
 
 
 
@@ -195,11 +195,11 @@
 
 
 
-                                    }}/{{ $nurseCheck->DIA
 
 
 
 
+                                    }}/{{ $nurseCheck?$nurseCheck->DIA : ''
 
 
 
@@ -251,7 +251,15 @@
 
 
 
-                                    }}/{{ $nurseCheck->BPM }}
+
+
+
+
+
+
+
+
+                                    }}/{{$nurseCheck? $nurseCheck->BPM:'' }}
                                 </div>
                             </div>
                         </div>
@@ -269,7 +277,7 @@
                                     class="card-body"
                                     style="padding: 40px 10px;"
                                 >
-                                    {{$check->urine_color}}
+                                    {{$nurseCheck?$check->urine_color:''}}
                                 </div>
                             </div>
                         </div>
@@ -287,7 +295,7 @@
                                     class="card-body"
                                     style="padding: 40px 10px;"
                                 >
-                                    {{$check->phlegm}}
+                                    {{$nurseCheck?$check->phlegm:''}}
                                 </div>
                             </div>
                         </div>
@@ -301,7 +309,7 @@
                                     class="card-body"
                                     style="padding: 40px 10px;"
                                 >
-                                    {{$check->food_type}}
+                                    {{$nurseCheck?$check->food_type:''}}
                                 </div>
                             </div>
                         </div>
@@ -414,6 +422,10 @@
                                     </td>
                                     <td>
                                         {{ $check->SIS }}/{{ $check->DIA
+
+
+
+
 
 
 
