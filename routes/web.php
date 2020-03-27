@@ -25,3 +25,4 @@ Route::resource('nurse/patients', 'Nurse\\PatientsController');
 Route::get('patients', 'PatientsController@show');
 Route::resource('tasks', 'TasksController');
 Route::resource('checks', 'Check\\ChecksController');
+Route::resource('nurse-check', 'NurseCheck\\NurseChecksController');

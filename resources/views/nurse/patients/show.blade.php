@@ -8,7 +8,7 @@
                 <div class="card-header">ผู้ป่วย#{{ $patient->uid }}</div>
                 <div class="card-body">
                     <a href="{{ url('/nurse/patients') }}" title="Back"
-                        ><button class="btn btn-warning btn-sm">
+                        ><button class="btn btn-warning btn-sm hidden-print">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i>
                             กลับ
                         </button></a
@@ -122,6 +122,191 @@
             </div>
             <div class="card mt-4">
                 <div class="card-body">
+                    <a
+                        class="btn btn-primary"
+                        href="/nurse-check/create?patient_uid={{$patient->uid}}"
+                        >ทำการตรวจผู้ป่วย</a
+                    >
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    ชีพจร
+                                </div>
+                                <div
+                                    class="card-body"
+                                    style="padding: 40px 10px;"
+                                >
+                                    {{ $nurseCheck->SIS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    }}/{{ $nurseCheck->DIA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    }}/{{ $nurseCheck->BPM }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div
+                                class="card text-center
+                                {{$check->urine_color == 'สีเหลืองเข้ม' ? 'bg-warning' : null}}
+                                {{$check->urine_color == 'สีเหลืองปนเลือด' ? 'bg-danger' : null}}"
+                            >
+                                <div class="card-header">
+                                    สีปัสสาวะ
+                                </div>
+                                <div
+                                    class="card-body"
+                                    style="padding: 40px 10px;"
+                                >
+                                    {{$check->urine_color}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div
+                                class="card text-center
+                            {{$check->urine_color == 'สีเหลืองอ่อน' ? 'bg-warning' : null}}
+                                {{$check->urine_color == 'สีเหลืองอ่อน' ? 'bg-danger' : null}}"
+                            >
+                                <div class="card-header">
+                                    สีเสมหะ
+                                </div>
+                                <div
+                                    class="card-body"
+                                    style="padding: 40px 10px;"
+                                >
+                                    {{$check->phlegm}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    ประเภทอาหาร
+                                </div>
+                                <div
+                                    class="card-body"
+                                    style="padding: 40px 10px;"
+                                >
+                                    {{$check->food_type}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
                     <h5>ผลการตรวจเช็คอาการผู้ป่วยรายวัน</h5>
                     <a href="?m_status=0">เดือนปัจจุบัน</a> |
                     <a href="?m_status=1">ย้อนหลัง 1 เดือน</a>
@@ -134,14 +319,21 @@
                                 <tr>
                                     <td>#</td>
                                     <td>วันที่</td>
-                                    <td>สีปัสวะ</td>
+                                    <td>สีปัสสาวะ</td>
                                     <td>ผิวหนัง</td>
+                                    <td>การทานอาหาร</td>
                                     <td>ประเภทอาหาร</td>
                                     <td>ระบบการหายใจ</td>
                                     <td>แผลกดทับ</td>
                                     <td>เสมหะ</td>
+                                    <td>ดวงตา</td>
+                                    <td>ปาก</td>
+                                    <td>กล้ามเนื้อแขน-ขา</td>
+                                    <td>การหยิบจับ</td>
+                                    <td>อื่นๆ</td>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @foreach($checks as $index => $check)
                                 <tr>
@@ -156,6 +348,9 @@
                                         {{ $check->skin }}
                                     </td>
                                     <td>
+                                        {{ $check->caneat }}
+                                    </td>
+                                    <td>
                                         {{ $check->food_type }}
                                     </td>
                                     <td>
@@ -166,6 +361,92 @@
                                     </td>
                                     <td>
                                         {{ $check->phlegm }}
+                                    </td>
+                                    <td>
+                                        {{ $check->eyes }}
+                                    </td>
+                                    <td>
+                                        {{ $check->mouth }}
+                                    </td>
+                                    <td>
+                                        {{ $check->muscles }}
+                                    </td>
+                                    <td>
+                                        {{ $check->handling }}
+                                    </td>
+                                    <td>
+                                        {{ $check->note }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr />
+                    <h5>ผลการตรวจเช็คอาการผู้ป่วยจากพยาบาล</h5>
+                    <a href="?m_status=0">เดือนปัจจุบัน</a> |
+                    <a href="?m_status=1">ย้อนหลัง 1 เดือน</a>
+
+                    <div class="table-responsive table-striped">
+                        <table class="table">
+                            <thead
+                                style="background-color: #175A87; color: #fff;"
+                            >
+                                <tr>
+                                    <td>#</td>
+                                    <td>วันที่</td>
+                                    <td>ชีพจร SIS/DIA/BPM</td>
+                                    <td>แผล</td>
+                                    <td>การติดเชื้อ</td>
+
+                                    <td>สายอาหาร</td>
+                                    <td>ตรวจโดย</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach($nurseChecks as $index => $check)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>
+                                        {{ $check->created_at->format('d/m/Y') }}
+                                    </td>
+                                    <td>
+                                        {{ $check->SIS }}/{{ $check->DIA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        }}/{{ $check->BPM }}
+                                    </td>
+                                    <td>
+                                        {{ $check->wound }}
+                                    </td>
+                                    <td>
+                                        {{ $check->infection }}
+                                    </td>
+                                    <td>
+                                        {{ $check->tube }}
+                                    </td>
+                                    <td>
+                                        ({{ $check->nurse->uid }})
+                                        {{ $check->nurse->name }}
                                     </td>
                                 </tr>
                                 @endforeach

@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Check;
+namespace App\Http\Controllers\NurseCheck;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Check;
+use App\NurseCheck;
 use App\Patient;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ChecksController extends Controller
+class NurseChecksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,19 +22,19 @@ class ChecksController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $checks = Check::where('urine_color', 'LIKE', "%$keyword%")
-                ->orWhere('skin', 'LIKE', "%$keyword%")
-                ->orWhere('food_type', 'LIKE', "%$keyword%")
-                ->orWhere('respiratory_system', 'LIKE', "%$keyword%")
-                ->orWhere('bedsore', 'LIKE', "%$keyword%")
-                ->orWhere('phlegm', 'LIKE', "%$keyword%")
+            $nursechecks = NurseCheck::where('SIS', 'LIKE', "%$keyword%")
+                ->orWhere('DIA', 'LIKE', "%$keyword%")
+                ->orWhere('BPM', 'LIKE', "%$keyword%")
+                ->orWhere('wound', 'LIKE', "%$keyword%")
+                ->orWhere('infection', 'LIKE', "%$keyword%")
+                ->orWhere('tube', 'LIKE', "%$keyword%")
                 ->orWhere('patient_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $checks = Check::latest()->paginate($perPage);
+            $nursechecks = NurseCheck::latest()->paginate($perPage);
         }
 
-        return view('checks.index', compact('checks'));
+        return view('nurseCheck.nurse-checks.index', compact('nursechecks'));
     }
 
     /**
@@ -46,9 +45,7 @@ class ChecksController extends Controller
     public function create(Request $request)
     {
         $patient = Patient::where('uid', $request->patient_uid)->first();
-        $checkCount = Check::where('patient_id', $patient->id)->count() + 1;
-        $isToDayCheck = Check::whereDate('created_at', Carbon::now())->count();
-        return view('checks.create', compact('patient', 'checkCount', 'isToDayCheck'));
+        return view('nurseCheck.nurse-checks.create', compact('patient'));
     }
 
     /**
@@ -60,19 +57,13 @@ class ChecksController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'urine_color' => 'required',
-            'skin' => 'required'
-        ]);
+
         $requestData = $request->all();
 
-        if ($requestData['caneat'] == '1') {
-            $requestData['foodtype'] = '0';
-        }
+        $requestData['nurse_id'] = request()->user()->id;
+        NurseCheck::create($requestData);
 
-        Check::create($requestData);
-
-        return redirect('checks/create?patient_uid=' . $request->patient_uid)->with('flash_message', 'Check added!');
+        return redirect('/nurse/patients/' . $request->patient_uid)->with('flash_message', 'Check added!');
     }
 
     /**
@@ -84,9 +75,9 @@ class ChecksController extends Controller
      */
     public function show($id)
     {
-        $check = Check::findOrFail($id);
+        $nursecheck = NurseCheck::findOrFail($id);
 
-        return view('checks.show', compact('check'));
+        return view('nurseCheck.nurse-checks.show', compact('nursecheck'));
     }
 
     /**
@@ -98,9 +89,9 @@ class ChecksController extends Controller
      */
     public function edit($id)
     {
-        $check = Check::findOrFail($id);
+        $nursecheck = NurseCheck::findOrFail($id);
 
-        return view('checks.edit', compact('check'));
+        return view('nurseCheck.nurse-checks.edit', compact('nursecheck'));
     }
 
     /**
@@ -113,16 +104,13 @@ class ChecksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'urine_color' => 'required',
-            'skin' => 'required'
-        ]);
+
         $requestData = $request->all();
 
-        $check = Check::findOrFail($id);
-        $check->update($requestData);
+        $nursecheck = NurseCheck::findOrFail($id);
+        $nursecheck->update($requestData);
 
-        return redirect('checks')->with('flash_message', 'Check updated!');
+        return redirect('NurseCheck/nurse-checks')->with('flash_message', 'NurseCheck updated!');
     }
 
     /**
@@ -134,8 +122,8 @@ class ChecksController extends Controller
      */
     public function destroy($id)
     {
-        Check::destroy($id);
+        NurseCheck::destroy($id);
 
-        return redirect('checks')->with('flash_message', 'Check deleted!');
+        return redirect('NurseCheck/nurse-checks')->with('flash_message', 'NurseCheck deleted!');
     }
 }

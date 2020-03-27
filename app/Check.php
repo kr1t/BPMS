@@ -26,7 +26,7 @@ class Check extends Model
      *
      * @var array
      */
-    protected $fillable = ['urine_color', 'skin', 'food_type', 'respiratory_system', 'bedsore', 'phlegm', 'patient_id'];
+    protected $fillable = ['urine_color', 'skin', 'food_type', 'respiratory_system', 'bedsore', 'phlegm', 'patient_id', 'caneat', 'eyes', 'mouth', 'muscles', 'handling', 'note'];
 
     public function patient()
     {
@@ -57,9 +57,21 @@ class Check extends Model
         });
         return  $first['v'];
     }
-    public function getFoodtypeAttribute($id)
+    public function getCaneatAttribute($id)
     {
         $datas = [
+            ["id" => 1, "v" => 'ผู้ป่วยทานอาหารเองได้'],
+            ["id" => 2, "v" => 'ผู้ป่วยใส่สายอาหาร'],
+        ];
+        $first = Arr::first($datas, function ($value, $key) use ($id) {
+            return $value['id'] == $id;
+        });
+        return  $first['v'];
+    }
+    public function getFoodTypeAttribute($id)
+    {
+        $datas = [
+            ["id" => 0, "v" => '-'],
             ["id" => 1, "v" => 'นม'],
             ["id" => 2, "v" => 'ผัก+นม'],
             ["id" => 3, "v" => 'ผัก+ไข่']
@@ -98,7 +110,61 @@ class Check extends Model
         $datas = [
             ["id" => 1, "v" => 'สีใสปกติ'],
             ["id" => 2, "v" => 'สีเหลืองอ่อน'],
-            ["id" => 3, "v" => 'สีเขียว']
+            ["id" => 3, "v" => 'สีเหลืองอ่อน']
+        ];
+        $first = Arr::first($datas, function ($value, $key) use ($id) {
+            return $value['id'] == $id;
+        });
+        return  $first['v'];
+    }
+
+    public function getEyesAttribute($id)
+    {
+        $datas = [
+            ["id" => 1, "v" => 'ตอบสนองได้ปกติ'],
+            ["id" => 2, "v" => 'ตอบสนองได้ช้า แต่ยังสามารถมองตามได้'],
+            ["id" => 3, "v" => 'อื่นๆ.....']
+        ];
+        $first = Arr::first($datas, function ($value, $key) use ($id) {
+            return $value['id'] == $id;
+        });
+        return  $first['v'];
+    }
+
+
+    public function getMouthAttribute($id)
+    {
+        $datas = [
+            ["id" => 1, "v" => 'สนทนาได้ปกติ'],
+            ["id" => 2, "v" => 'เจาะคอไม่สามารถสนทนาได้'],
+            ["id" => 3, "v" => 'อื่นๆ.....']
+        ];
+        $first = Arr::first($datas, function ($value, $key) use ($id) {
+            return $value['id'] == $id;
+        });
+        return  $first['v'];
+    }
+
+
+    public function getMusclesAttribute($id)
+    {
+        $datas = [
+            ["id" => 1, "v" => 'กล้ามเนื้อแขนขาใช้งานได้ปกติ'],
+            ["id" => 2, "v" => 'กล้ามเนื้อแขนขาอ่อนแรง'],
+            ["id" => 3, "v" => 'กล้ามเนื้อแขนขาไม่สามารถใช้งานได้']
+        ];
+        $first = Arr::first($datas, function ($value, $key) use ($id) {
+            return $value['id'] == $id;
+        });
+        return  $first['v'];
+    }
+
+    public function getHandlingAttribute($id)
+    {
+        $datas = [
+            ["id" => 1, "v" => 'สามารถหยิบจับสิ่งของทานอาหารด้วยตัวเองได้'],
+            ["id" => 2, "v" => 'สามารถหยิบจับสิ่งของได้บ้างกล้ามเนื้อมืออ่อนแรง'],
+            ["id" => 3, "v" => 'ไม่สามารถหยิบจับสิ่งของได้เลยช่วยเหลือตัวเองไม่ได้เลย']
         ];
         $first = Arr::first($datas, function ($value, $key) use ($id) {
             return $value['id'] == $id;

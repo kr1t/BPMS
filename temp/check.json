@@ -1,57 +1,31 @@
 {
     "fields": [
         {
-            "name": "urine_color",
-            "type": "select",
-            "options": {
-                "1": "สีปกติ",
-                "2": "สีเหลืองเข้ม",
-                "3": "สีเหลืองปนเลือด"
-            }
+            "name": "SIS",
+            "type": "integer"
         },
         {
-            "name": "skin",
-            "type": "select",
-            "options": {
-                "1": "ผิวปกติ",
-                "2": "ผิวแห้งกร้าน",
-                "3": "ผิวมัน"
-            }
+            "name": "DIA",
+            "type": "integer"
         },
         {
-            "name": "food_type",
-            "type": "select",
-            "options": {
-                "1": "นม",
-                "2": "ผัก+นม",
-                "3": "ผัก+ไข่"
-            }
+            "name": "BPM",
+            "type": "integer"
         },
         {
-            "name": "respiratory_system",
-            "type": "select",
-            "options": {
-                "1": "หายใจได้เอง",
-                "2": "มีเครื่องช่วยหายใจ",
-                "3": "เจาะคอ"
-            }
+            "name": "wound",
+            "type": "text"
         },
         {
-            "name": "bedsore",
-            "type": "select",
-            "options": {
-                "1": "ก้น",
-                "2": "ข้อศอก",
-                "3": "ข้อเท้า"
-            }
+            "name": "infection",
+            "type": "text"
         },
         {
-            "name": "phlegm",
+            "name": "tube",
             "type": "select",
             "options": {
-                "1": "สีใสปกติ",
-                "2": "สีเหลืองอ่อน",
-                "3": "สีเขียว"
+                "1": "เปลี่ยนสายอาหารเรียบร้อย",
+                "2": "ผู้ป่วยไม่ได้ใส่สายอาหาร"
             }
         },
 
@@ -73,16 +47,6 @@
             "name": "patient",
             "type": "belongsTo",
             "class": "App\\Patient"
-        }
-    ],
-    "validations": [
-        {
-            "field": "urine_color",
-            "rules": "required"
-        },
-        {
-            "field": "skin",
-            "rules": "required"
         }
     ]
 }

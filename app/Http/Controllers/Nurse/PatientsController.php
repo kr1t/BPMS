@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Patient;
 use App\Check;
+use App\NurseCheck;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +86,7 @@ class PatientsController extends Controller
     public function show($id, Request $request)
     {
         $patient = Patient::where('uid', $id)->first();
+
         $checks = Check::where('patient_id', $patient->id)->where(function ($query) use ($request) {
 
             if ($request->m_status == 1) {
@@ -92,7 +95,27 @@ class PatientsController extends Controller
                 $query->whereMonth('created_at', Carbon::now());
             }
         })->get();
-        return view('nurse.patients.show', compact('patient', 'checks'));
+
+        $check = Check::where('patient_id', $patient->id)->where(function ($query) use ($request) {
+
+            $query->whereMonth('created_at', Carbon::now()->subDay(1));
+        })->latest()->first();
+
+
+
+
+        $nurseChecks = NurseCheck::where('patient_id', $patient->id)->where(function ($query) use ($request) {
+            if ($request->m_status == 1) {
+                $query->whereMonth('created_at', Carbon::now()->subMonth(1));
+            } else {
+                $query->whereMonth('created_at', Carbon::now());
+            }
+        })->get();
+
+        $nurseCheck = NurseCheck::where('patient_id', $patient->id)->where(function ($query) use ($request) {
+        })->latest()->first();
+
+        return view('nurse.patients.show', compact('patient', 'checks', 'nurseChecks', 'check', 'nurseCheck'));
     }
 
     /**
